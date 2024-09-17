@@ -18,7 +18,6 @@
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/angular-blog",
-
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -29,13 +28,7 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets"
-              },
-              {
-                "glob": "favicon.ico",
-                "input": "src",
-                "output": "/"
+                "input": "public"
               }
             ],
             "styles": [

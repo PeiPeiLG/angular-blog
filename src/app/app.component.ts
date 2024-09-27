@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from './layouts/layout.component';
+import { LayoutComponent } from './layout/layout.component';
+import { APP_TITLE } from './shared/models/constants/base.constants';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,LayoutComponent],
-  template: `<app-layout></app-layout>`,
-  styleUrl: './app.component.scss'
+  imports: [RouterOutlet],
+  template: `
+    <router-outlet />
+  `,
 })
 export class AppComponent {
-  title = 'angular-blog123';
 }

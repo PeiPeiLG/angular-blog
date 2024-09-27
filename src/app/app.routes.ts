@@ -1,15 +1,20 @@
 import { Routes } from '@angular/router';
-import { AboutComponent } from './about/about.component';
+import { LayoutComponent } from './layout/layout.component';
+import { STATIC_ROUTES } from './shared/models/constants/routes.constant';
 
 export const routes: Routes = [
-  // {
-  //   path: 'blog',
-  //   loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule)
-  // }
-  { path: 'about', title: 'About', component: AboutComponent },
-  // {
-  //   path: '',
-  //   redirectTo: 'about',
-  //   pathMatch: 'full',
-  // }
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
+      {
+        path: STATIC_ROUTES.ABOUT.url,
+        title: STATIC_ROUTES.ABOUT.title,
+        loadComponent: () =>
+          import('./pages/about-page/about-page.component').then(
+            (m) => m.AboutPageComponent
+          ),
+      },
+    ],
+  },
 ];

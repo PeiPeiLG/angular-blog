@@ -1,1 +1,21 @@
-<p>header works!</p>
+<header #header class="pt-8 pb-5 flex items-center">
+  <a class="flex items-center group" [routerLink]="['/']">
+    <img
+      class="w-8 border rounded-full p-1 mr-1 shake wait-0"
+      src="images/about/pei.jpg"
+      alt="logo"
+    />
+    @for(word of title().split(' '); track $index){
+    <span class="shake px-0.5 font-bold" [class]="'wait-' + ($index + 1)">{{
+      word
+    }}</span>
+    }
+  </a>
+  <div class="ml-auto grid grid-cols-5 gap-1 text-center">
+    <div>O</div>
+    <a [routerLink]="[STATIC_ROUTES().ABOUT.url]">About</a>
+    <span>|</span>
+    <a href="#">link</a>
+    <a href="#">link</a>
+  </div>
+</header>

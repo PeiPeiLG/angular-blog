@@ -1,50 +1,34 @@
-//我的LayoutComponent 如下 為甚麼 我的layout works!123 顯示了兩個
-
-import { AfterViewInit, Component, ElementRef, inject, PLATFORM_ID, ViewChild, viewChild } from '@angular/core';
+import { Component, computed, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { isPlatformBrowser } from '@angular/common';
+import { HeaderComponent } from './header/header.component';
 const Comments = [HeaderComponent, FooterComponent];
 @Component({
   selector: 'app-layout',
   standalone: true,
   imports: [RouterOutlet, Comments],
   template: `
-    <app-header  />
-    <header #header>123</header>
-    <main #main>
-      <router-outlet />
-    </main>
-    <app-footer #footer />
+    <div class="w-full max-w-7xl mx-auto px-3">
+      <app-header (height)="setHeaderHeight($event)" />
+      <main [style.height]="mainHeight()">
+        <router-outlet />
+      </main>
+      <app-footer (height)="setFooterHeight($event)" />
+    </div>
   `,
   styles: ``,
 })
-export class LayoutComponent implements AfterViewInit {
-  private platformId = inject(PLATFORM_ID);
-  headerEl = viewChild(HeaderComponent);
-  mainEl = viewChild<ElementRef>('main');
-  footerEl = viewChild<ElementRef>('footer');
-  ngAfterViewInit() {
-    if(isPlatformBrowser(this.platformId)){
-      console.log(this.headerEl()?.elementRef);
-      // this.setMainHeight();
+export class LayoutComponent {
+  headerHeight = signal<number>(0);
+  footerHeight = signal<number>(0);
+  mainHeight = computed(
+    () => `calc(100vh - ${this.headerHeight() + this.footerHeight()}px`
+  );
 
-      window.addEventListener('resize', () => console.log(1));
-    }
-
+  setHeaderHeight(e: number): void {
+    this.headerHeight.set(e);
   }
-
-  // setMainHeight() {
-  //   const headerElement = this.headerEl();
-  //   const footerElement = this.footerEl();
-  //   const mainElement = this.mainEl();
-  //   if (!!headerElement && !!footerElement && !!mainElement) {
-  //     const headerHeight = headerElement.nativeElement.offsetHeight;
-  //     const footerHeight = footerElement.nativeElement.offsetHeight;
-  //     mainElement.nativeElement.style.height = `calc(100vh - ${
-  //       headerHeight + footerHeight
-  //     }px)`;
-  //   }
-  // }
+  setFooterHeight(e: number): void {
+    this.footerHeight.set(e);
+  }
 }

@@ -1,0 +1,22 @@
+.shake{
+  @apply transition ease-out duration-300 animate-bounce-y group-hover:-translate-y-2;
+}
+.wait-0{
+  @apply delay-0;
+}
+
+.wait-1{
+  @apply delay-75;
+}
+
+.wait-2{
+  @apply delay-100;
+}
+
+.wait-3{
+  @apply delay-150;
+}
+
+.wait-4{
+  @apply delay-200;
+}

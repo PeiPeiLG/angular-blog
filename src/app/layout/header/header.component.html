@@ -1,21 +1,43 @@
 <header #header class="pt-8 pb-5 flex items-center">
-  <a class="flex items-center group" [routerLink]="['/']">
+  <a class="flex items-center group hover:text-rose-500" [routerLink]="['/']">
     <img
       class="w-8 border rounded-full p-1 mr-1 shake wait-0"
       src="images/about/pei.jpg"
       alt="logo"
     />
     @for(word of title().split(' '); track $index){
-    <span class="shake px-0.5 font-bold" [class]="'wait-' + ($index + 1)">{{
-      word
-    }}</span>
+    <span
+      class="shake px-0.5 font-bold hidden sm:inline"
+      [class]="'wait-' + ($index + 1)"
+      >{{ word }}</span
+    >
     }
   </a>
-  <div class="ml-auto grid grid-cols-5 gap-1 text-center">
-    <div>O</div>
-    <a [routerLink]="[STATIC_ROUTES().ABOUT.url]">About</a>
-    <span>|</span>
-    <a href="#">link</a>
-    <a href="#">link</a>
+  <div class="ml-auto flex items-center">
+    <button
+      type="button"
+      (click)="onSwitchThemeMode()"
+      [class.animate-jump-y]="themeMode().onSwitch"
+      class="text-yellow-500 hover:text-yellow-600 text-lg"
+    >
+      @if(themeMode().mode === 'light'){
+      <i class="fa-solid fa-sun"></i>
+      }@else {
+      <i class="fa-solid fa-moon"></i>
+      }
+    </button>
+    <a
+      class="border-r border-shark-400 hover:text-rose-500 mx-5 pr-5"
+      [routerLink]="[STATIC_ROUTES().ABOUT.url]"
+      >About</a
+    >
+    <nav class="grid grid-cols-2 gap-3 text-lg">
+      <a title="github" href="#" class="hover:text-rose-500">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a title="linkedin" href="#" class="hover:text-rose-500">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+    </nav>
   </div>
 </header>

@@ -1,10 +1,12 @@
 <header #header class="pt-8 pb-5 flex items-center">
   <a class="flex items-center group hover:text-rose-500" [routerLink]="['/']">
+    <!-- logo -->
     <img
-      class="w-8 border rounded-full p-1 mr-1 shake wait-0"
+      class="w-8 border bg-white rounded-full p-1 mr-1 shake wait-0"
       src="images/about/pei.jpg"
       alt="logo"
     />
+    <!-- 動態字母 -->
     @for(word of title().split(' '); track $index){
     <span
       class="shake px-0.5 font-bold hidden sm:inline"
@@ -13,14 +15,16 @@
     >
     }
   </a>
+  <!-- 功能選單 -->
   <div class="ml-auto flex items-center">
+    <!-- 太陽/月亮 切換 -->
     <button
       type="button"
       (click)="onSwitchThemeMode()"
-      [class.animate-jump-y]="themeMode().onSwitch"
+      [class.animate-jump-y]="themeSwitch()"
       class="text-yellow-500 hover:text-yellow-600 text-lg"
     >
-      @if(themeMode().mode === 'light'){
+      @if(themeMode() === 'light'){
       <i class="fa-solid fa-sun"></i>
       }@else {
       <i class="fa-solid fa-moon"></i>
@@ -31,6 +35,7 @@
       [routerLink]="[STATIC_ROUTES().ABOUT.url]"
       >About</a
     >
+    <!-- 外部連結 -->
     <nav class="grid grid-cols-2 gap-3 text-lg">
       <a title="github" href="#" class="hover:text-rose-500">
         <i class="fa-brands fa-github"></i>

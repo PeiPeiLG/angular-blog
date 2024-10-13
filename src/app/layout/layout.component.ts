@@ -1,7 +1,8 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, computed, Inject, PLATFORM_ID, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { isPlatformBrowser } from '@angular/common';
 const Comments = [HeaderComponent, FooterComponent];
 @Component({
   selector: 'app-layout',
@@ -21,9 +22,15 @@ const Comments = [HeaderComponent, FooterComponent];
 export class LayoutComponent {
   headerHeight = signal<number>(0);
   footerHeight = signal<number>(0);
-  mainHeight = computed(
-    () => `calc(100vh - ${this.headerHeight() + this.footerHeight()}px`
-  );
+  mainHeight = computed(() => {
+    if (isPlatformBrowser(this.platformId)) {
+      return `calc(${window.innerHeight}px - ${this.headerHeight() + this.footerHeight()}px)`;
+    } else {
+      return `calc(100vh - ${this.headerHeight() + this.footerHeight()}px)`;
+    }
+  });
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   setHeaderHeight(e: number): void {
     this.headerHeight.set(e);

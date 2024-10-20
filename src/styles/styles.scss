@@ -6,8 +6,12 @@ html,
 body {
   height: 100%;
   margin: 0;
-  @apply bg-white text-shark-500 dark:bg-shark-700 dark:text-white;
+  @apply bg-white text-shark-700 dark:bg-shark-700 dark:text-white;
 }
 a,button {
-  @apply transition ease-in-out font-sans;
+  @apply transition ease-in-out font-sans cursor-pointer;
+}
+p
+{
+  @apply mb-0 #{!important};
 }

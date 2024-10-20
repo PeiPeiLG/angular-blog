@@ -1,1 +1,10 @@
 @use "@angular/material/prebuilt-themes/rose-red.css";
+.mat-mdc-menu-panel{
+  @apply rounded-xl bg-white dark:bg-shark-500 bg-opacity-75 dark:bg-opacity-75 #{!important}
+}
+.cdk-overlay-connected-position-bounding-box{
+  @apply mt-1 #{!important}
+}
+.mat-mdc-mini-fab{
+  @apply shadow-none #{!important}
+}

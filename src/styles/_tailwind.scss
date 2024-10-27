@@ -1,3 +1,16 @@
 @use "tailwindcss/base";
 @use "tailwindcss/components";
 @use "tailwindcss/utilities";
+
+@layer base {
+
+  p,a,button{
+    @apply text-sm md:text-base;
+  }
+  h1 {
+    @apply text-2xl md:text-3xl #{!important};
+  }
+  h2 {
+    @apply text-xl md:text-2xl mb-0 #{!important};
+  }
+}

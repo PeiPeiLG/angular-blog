@@ -1,1 +1,14 @@
-<p>topics-page works!</p>
+<ul class="flex flex-col items-center text-center">
+  @for( row of skillTagsRows(); track $index){
+  <li class="flex items-center my-1 text-xl">
+    @for(tag of row; track $index){
+    <a
+      href="#"
+      [style.fontSize.em]="tag.count * 0.1"
+      class="mx-2 border-dashed border border-shark-700 leading-none dark:border-white rounded-md py-1 px-2 hover:text-rose-500 hover:border-rose-500"
+      >{{ tag.key }}</a
+    >
+    }
+  </li>
+  }
+</ul>

@@ -1,14 +1,42 @@
-<ul class="flex flex-col items-center text-center">
-  @for( row of skillTagsRows(); track $index){
-  <li class="flex items-center my-1 text-xl">
-    @for(tag of row; track $index){
-    <a
-      href="#"
-      [style.fontSize.em]="tag.count * 0.1"
-      class="mx-2 border-dashed border border-shark-700 leading-none dark:border-white rounded-md py-1 px-2 hover:text-rose-500 hover:border-rose-500"
-      >{{ tag.key }}</a
-    >
-    }
+<ul class="">
+  @for(card of cards(); track $index){
+  <li class="bg-red-50 dark:bg-shark-600 rounded-xl p-2 mb-3 last:mb-0">
+    <figure class="flex items-stretch">
+      <div
+        class="hidden xs:flex w-[208px] h-[126px] sm:w-[260px] sm:h-[160px] overflow-hidden rounded-xl justify-center items-center bg-gray-100"
+      >
+        <img class="h-full" src="{{ card.image }}" alt="{{ card.title }}" />
+      </div>
+
+      <figcaption class="flex-1 px-5 flex flex-col">
+        <div>
+          <h2 class="mb-2">{{ card.title }}</h2>
+          <p
+            class="text-shark-600 dark:text-shark-100 line-clamp-2 sm:line-clamp-3 overflow-hidden text-ellipsis text-justify mt-1"
+          >
+            {{ card.description }}
+          </p>
+        </div>
+        <div class="mb-auto">
+          <a [routerLink]="[card.postUrl]" class="hover:text-rose-500"
+            >...more</a
+          >
+        </div>
+        <ul class="flex justify-end items-center">
+          <li>{{ card.createdAt }}</li>
+          @for(tag of card.tags; track $index){
+          <li class="border-l-2 pl-2 ml-2 border-rose-600 leading-4">
+            <a [routerLink]="[tag.url]" class="hover:text-rose-500 leading-4">{{
+              tag.name
+            }}</a>
+          </li>
+          }
+        </ul>
+      </figcaption>
+    </figure>
   </li>
+  }@empty {
+  <li class="text-center">Empty</li>
   }
 </ul>
+<div [innerHTML]="htmlContent()"></div>

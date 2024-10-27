@@ -41,9 +41,9 @@ const MaterialModule = [MatButtonModule, MatMenuModule];
         </section>
         <section class="hidden md:block md:col-span-3">
           <div
-            class="h-[500px] bg-red-50 dark:bg-shark-600 rounded-xl hidden md:block"
+            class="bg-red-50 dark:bg-shark-600 rounded-xl hidden md:block"
           >
-            <ng-template *ngTemplateOutlet="sidebarWidgets" />
+            <ng-template *ngTemplateOutlet="sidebarWidgets" ></ng-template>
           </div>
         </section>
       </main>
@@ -73,36 +73,36 @@ const MaterialModule = [MatButtonModule, MatMenuModule];
       <ul class="p-2 grid grid-cols-1 gap-2">
         <li>
           <button
-            class="bg-rose-200 dark:bg-shark-400 w-full p-2 rounded-xl text-left hover:bg-rose-300 dark:hover:bg-shark-500"
+            class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 w-full p-2 rounded-xl text-left hover:bg-rose-300 dark:hover:bg-shark-300"
             type="button"
           >
             <i
-              class="fa-solid fa-magnifying-glass mr-2 text-rose-800 dark:text-rose-500"
+              class="fa-solid fa-magnifying-glass mr-2 text-rose-800 dark:text-rose-600"
             ></i>
             <span>Quick Search</span>
           </button>
         </li>
-        <li class="bg-rose-200 dark:bg-shark-400 p-2 rounded-xl">
+        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
           <app-categories />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-400 p-2 rounded-xl">
+        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
           <app-tags />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-400 p-2 rounded-xl">
+        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
           <app-recent-posts />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-400 p-2 rounded-xl">
+        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
           <app-archive />
         </li>
         @if(scrollPosition()> this.headerHeight() + 15){
         <li class="hidden md:block">
           <button
             (click)="scrollToTop()"
-            class="bg-rose-300 dark:bg-shark-400 w-full p-2 rounded-xl hover:bg-rose-400 dark:hover:bg-shark-500"
+            class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 w-full p-2 rounded-xl hover:bg-rose-300 dark:hover:bg-shark-500"
             type="button"
           >
             <i
-              class="fa-solid fa-chevron-up text-rose-800 dark:text-rose-500"
+              class="fa-solid fa-chevron-up text-rose-800 dark:text-rose-600"
             ></i>
           </button>
         </li>

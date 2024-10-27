@@ -1,13 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'selector',
+  darkMode: "selector",
   purge: {
     enabled: true,
-    content: [
-      "./src/**/*.html",
-      "./src/**/*.scss",
-      "./src/**/*.ts",
-    ],
+    content: ["./src/**/*.html", "./src/**/*.scss", "./src/**/*.ts"],
   },
   media: false, // or 'media' or 'class'
   theme: {
@@ -15,6 +11,9 @@ module.exports = {
       sans: ['"Noto Sans TC"', '"sans-serif"'],
     },
     extend: {
+      screens: {
+        xs: "554px",
+      },
       colors: {
         rose: {
           DEFAULT: "#D68A98",

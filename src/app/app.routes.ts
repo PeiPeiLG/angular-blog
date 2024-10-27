@@ -23,6 +23,30 @@ export const routes: Routes = [
             (m) => m.AboutPageComponent
           ),
       },
+      {
+        path: STATIC_ROUTES.POST.url,
+        title: STATIC_ROUTES.POST.title,
+        loadComponent: () =>
+          import('./pages/post-page/post-page.component').then(
+            (m) => m.PostPageComponent
+          ),
+      },
+      {
+        path: STATIC_ROUTES.TOPICS.url,
+        title: STATIC_ROUTES.TOPICS.title,
+        loadComponent: () =>
+          import('./pages/topics-page/topics-page.component').then(
+            (m) => m.TopicsPageComponent
+          ),
+      },
+      {
+        path: STATIC_ROUTES.LIST.url,
+        title: STATIC_ROUTES.LIST.title,
+        loadComponent: () =>
+          import('./pages/list-page/list-page.component').then(
+            (m) => m.ListPageComponent
+          ),
+      },
     ],
   },
 ];

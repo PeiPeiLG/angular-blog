@@ -12,16 +12,17 @@ const filePath = path.join(articleDir, 'index.md');
 
 // 定義 YAML front matter ' 789 '
 const template = `---
+id: "${articleName}"
 title: "Your Title Here"
+cover: "file/cover.jpg"
 category: "Uncategorized"
 tags:
   - "tag1"
 date: "${new Date().toISOString().split('T')[0]}"
 ---
 
-# 你的內容開始於此
+# 請開始你的表演
 `;
-
 // 檢查資料夾是否已經存在
 if (fs.existsSync(articleDir)) {
   console.error('文章資料夾已經存在:', articleDir);

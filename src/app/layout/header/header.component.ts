@@ -2,8 +2,10 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Inject,
   inject,
   output,
+  PLATFORM_ID,
   Renderer2,
   signal,
   viewChild,
@@ -12,6 +14,8 @@ import { RouterLink } from '@angular/router';
 import { APP_TITLE } from '../../shared/models/constants/base.constants';
 import { STATIC_ROUTES } from '../../shared/models/constants/routes.constant';
 import { tap, timer } from 'rxjs';
+import { GET_LOCAL_STORAGE, SET_LOCAL_STORAGE } from '../../shared/models/constants/browser-storage';
+import { isPlatformBrowser } from '@angular/common';
 // 主題模式類型
 type ThemeModeType = 'light' | 'dark';
 @Component({
@@ -28,6 +32,9 @@ export class HeaderComponent implements AfterViewInit {
   height = output<number>();
   title = signal(APP_TITLE);
 
+  getLocalStorage = new GET_LOCAL_STORAGE();
+  setLocalStorage = new SET_LOCAL_STORAGE();
+
   themeSwitch = signal(false);
   themeMode = signal<ThemeModeType>('light');
 
@@ -35,7 +42,13 @@ export class HeaderComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     this.height.emit(this.headerEl().nativeElement.offsetHeight);
+    if (isPlatformBrowser(this.platformId)) {
+      this.themeMode.set(this.getLocalStorage.theme);
+      this.setHtmlThemeClass(this.getLocalStorage.theme);
+    }
   }
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   // 切換主題模式
   onSwitchThemeMode(): void {
@@ -47,6 +60,7 @@ export class HeaderComponent implements AfterViewInit {
             this.themeMode.update((item) => {
               const newTheme = item === 'light' ? 'dark' : 'light';
               this.setHtmlThemeClass(newTheme);
+              this.setLocalStorage.theme = newTheme;
               return newTheme;
             });
           }

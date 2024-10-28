@@ -33,17 +33,18 @@ const MaterialModule = [MatButtonModule, MatMenuModule];
     <div class="w-full max-w-6xl mx-auto px-3">
       <app-header (height)="setHeaderHeight($event)" />
       <main
-        [style.height]="mainHeight()"
+        [style.min-height]="mainHeight()"
         class="grid md:grid-cols-12 gap-5 relative"
       >
-        <section class="md:col-span-9">
-          <router-outlet />
+        <section class="md:col-span-9 shadow-lg rounded-xl shadow-rose-500/50 flex flex-col mb-10">
+          <div class="mb-auto">
+            <router-outlet />
+          </div>
+          <!-- <div class="h-4 rounded-b-xl bg-rose-500"></div> -->
         </section>
         <section class="hidden md:block md:col-span-3">
-          <div
-            class="bg-red-50 dark:bg-shark-600 rounded-xl hidden md:block"
-          >
-            <ng-template *ngTemplateOutlet="sidebarWidgets" ></ng-template>
+          <div class="bg-red-50 dark:bg-shark-600 rounded-xl hidden md:block">
+            <ng-template *ngTemplateOutlet="sidebarWidgets"></ng-template>
           </div>
         </section>
       </main>
@@ -82,16 +83,24 @@ const MaterialModule = [MatButtonModule, MatMenuModule];
             <span>Quick Search</span>
           </button>
         </li>
-        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
+        <li
+          class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl"
+        >
           <app-categories />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
+        <li
+          class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl"
+        >
           <app-tags />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
+        <li
+          class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl"
+        >
           <app-recent-posts />
         </li>
-        <li class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl">
+        <li
+          class="bg-rose-200 dark:bg-shark-500 dark:md:bg-opacity-50 p-2 rounded-xl"
+        >
           <app-archive />
         </li>
         @if(scrollPosition()> this.headerHeight() + 15){

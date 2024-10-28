@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @use "tailwind";
 @use "material";
+@use "highlight";
 
 html,
 body {
@@ -8,10 +9,13 @@ body {
   margin: 0;
   @apply bg-white text-shark-700 dark:bg-shark-700 dark:text-white;
 }
-a,button {
+a,
+button {
   @apply transition ease-in-out font-sans cursor-pointer;
 }
-p
-{
+p {
   @apply mb-0 #{!important};
+}
+code {
+  @apply my-2 rounded-xl;
 }

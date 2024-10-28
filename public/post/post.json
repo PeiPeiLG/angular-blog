@@ -1,14 +1,13 @@
 [
   {
+    "id": "career-journey",
     "title": "Your Title Here",
+    "cover": "file/cover.jpg",
     "category": "Uncategorized",
-    "date": "2024-09-17",
+    "date": "2024-10-28",
     "tags": [
-      "tag1",
-      "我是誰",
-      "他是誰"
+      "tag1"
     ],
-    "content": "# 你的內容開始於此\n",
-    "folder": "test"
+    "content": "# 請開始你的表演\n![樓梯](post/career-journey/file/cover.jpg)\n![小橘子](post/career-journey/file/SLRd8iy.jpg)\n~~~ts\nconst a:string = 'HI';\n~~~\n"
   }
 ]

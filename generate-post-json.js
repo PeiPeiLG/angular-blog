@@ -25,12 +25,13 @@ folders.forEach((folder) => {
 
     // 將文章資訊加入列表
     articles.push({
+      id: folder, // 文章 ID，可能用於路由等
       title: parsed.attributes.title || "No Title",
+      cover: parsed.attributes.cover || "Uncategorized",
       category: parsed.attributes.category || "Uncategorized",
       date: parsed.attributes.date || "Unknown Date",
       tags: parsed.attributes.tags || [], // 解析 `tags` 陣列
-      content: parsed.body, // 文章的 Markdown 內容
-      folder: folder, // 資料夾名稱，可能用於路由等
+      content: parsed.body.replace(/\.\.\//g, ''), // 文章的 Markdown 內容
     });
   } else {
     console.warn(`跳過資料夾：${folder}（找不到 index.md）`);
